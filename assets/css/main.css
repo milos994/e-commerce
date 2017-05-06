@@ -1,0 +1,443 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+
+    /* U slucaju da nema sadrzaja na stranici da 
+    header i footer ne budu prilepljeni jedan uz drugi*/
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    /* Ne racuna pading i border u sirinu*/
+    box-sizing: border-box;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.25);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.5);
+}
+
+h3 {
+    margin-bottom: 30px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.navbar-default .navbar-nav > li > a {
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, .5);
+    font-size: 16px;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #000000;
+}
+
+.navbar-brand {
+    color: #FFF;
+}
+
+.navbar-brand img {
+    height: 35px;
+    margin-right: 15px;
+}
+
+.navbar-light .navbar-toggler {
+    border: none;
+}
+
+.carousel {
+    margin-bottom: 4rem;
+}
+
+.carousel-item, .carousel-item.active {
+    align-items: flex-start;
+}
+
+.proizvodi {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 4rem;
+}
+
+.proizvodi figcaption {
+    font-weight: bold;
+    font-size: 23px;
+    line-height: 1;
+    padding: 5px;
+}
+
+.proizvod {
+    margin: 0 1rem 1rem 0;
+    width: 200px;
+    border: 1px solid #e3e1e1;
+    text-align: center;
+    background: #fff;
+}
+
+figure > img {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.detalji-proizvoda {
+    padding: 14px;
+}
+
+.detalji-proizvoda p {
+    margin-bottom: 1rem;
+}
+
+.izjave-nasih-kupaca {
+    padding: 3rem 0;
+    margin-bottom: 4rem;
+    background: url('../img/watch-footer.jpg') center no-repeat fixed;
+    background-size: cover;
+    color: #fff;
+}
+
+.izjave {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.izjava-kupca {
+    padding: 0.5rem;
+    margin: 0 1rem 1rem 0;
+    width: 250px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, .15);
+    box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.15);
+}
+
+.kupac {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.slika-kupca {
+    height: 30%;
+    margin: 1rem 1rem 0 1rem;
+}
+
+.slika-kupca img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+
+.ime-kupca {
+    margin-top: 1rem;
+}
+
+.izjava {
+    text-align: center;
+}
+
+.social-icon {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+#social {
+    margin: 20px 10px;
+    text-align: center;
+}
+
+.smGlobalBtn {
+    display: inline-block;
+    position: relative;
+    margin-right: 2rem;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ddd;
+    box-shadow: 0 3px 3px #999;
+    padding: 0px;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+    font-weight: normal;
+    line-height: 2em;
+    border-radius: 27px;
+    -moz-border-radius: 27px;
+    -webkit-border-radius: 27px;
+}
+
+.facebookBtn {
+    background: #4060A5;
+}
+
+.facebookBtn:before {
+    font-family: "FontAwesome";
+    content: "\f09a";
+}
+
+.facebookBtn:hover {
+    color: #4060A5;
+    background: #fff;
+    border-color: #4060A5;
+}
+
+.twitterBtn {
+    background: #00ABE3;
+}
+
+.twitterBtn:before {
+    font-family: "FontAwesome";
+    content: "\f099";
+
+}
+
+.twitterBtn:hover {
+    color: #00ABE3;
+    background: #fff;
+    border-color: #00ABE3;
+}
+
+.googleplusBtn {
+    background: #e64522;
+}
+
+.googleplusBtn:before {
+    font-family: "FontAwesome";
+    content: "\f0d5";
+}
+
+.googleplusBtn:hover {
+    color: #e64522;
+    background: #fff;
+    border-color: #e64522;
+}
+
+.linkedinBtn {
+    background: #0094BC;
+}
+
+.linkedinBtn:before {
+    font-family: "FontAwesome";
+    content: "\f0e1";
+}
+
+.linkedinBtn:hover {
+    color: #0094BC;
+    background: #fff;
+    border-color: #0094BC;
+}
+
+.pinterestBtn {
+    background: #cb2027;
+}
+
+.pinterestBtn:before {
+    font-family: "FontAwesome";
+    content: "\f0d2";
+}
+
+.pinterestBtn:hover {
+    color: #cb2027;
+    background: #fff;
+    border-color: #cb2027;
+}
+
+.tumblrBtn {
+    background: #3a5876;
+}
+
+.tumblrBtn:before {
+    font-family: "FontAwesome";
+    content: "\f173";
+}
+
+.tumblrBtn:hover {
+    color: #3a5876;
+    background: #fff;
+    border-color: #3a5876;
+}
+
+.rssBtn {
+    background: #e88845;
+}
+
+.rssBtn:before {
+    font-family: "FontAwesome";
+    content: "\f09e";
+}
+
+.rssBtn:hover {
+    color: #e88845;
+    background: #fff;
+    border-color: #e88845;
+}
+
+footer {
+    display: flex;
+    height: 4rem;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-top: 3px solid rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0;
+}
+
+/***** O nama *****/
+.slika-radnje {
+    height: 450px;
+    padding: 3rem 0;
+    margin-bottom: 4rem;
+    background: url('../img/about_us.jpg') center no-repeat;
+}
+
+.opis-radnje {
+    margin-bottom: 4rem;
+}
+
+.opis-radnje p {
+    font-size: 1rem;
+}
+
+/***** Kontakt *****/
+
+.map {
+    margin-bottom: 4rem;
+}
+
+.map iframe {
+    width: 100%;
+}
+
+.form {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+/***** Korpa *****/
+
+.korpa-proizvodi {
+    padding: 1rem;
+    border: 1px solid #e3e1e1;
+}
+
+.korpa-proizvod {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #e3e1e1;
+    border-bottom: 1px solid #e3e1e1;
+    align-items: stretch;
+}
+
+.slika-proizvod, .model-proizvod, .cena-proizvod {
+    display: flex;
+    flex-basis: 30%;
+    align-items: center;
+    justify-content: center;
+}
+
+.cena-proizvod {
+    border-left: 1px solid #e3e1e1;
+    padding-left: 1rem;
+}
+
+/***** Uplatnica *****/
+
+.uplatnice {
+    position: relative;
+}
+
+.uplatnice .uplatilac {
+    position: absolute;
+    top: 70px;
+    font-size: 12px;
+    left: 390px;
+
+}
+
+.uplatnice .svrha-uplate {
+    position: absolute;
+    top: 140px;
+    font-size: 12px;
+    left: 390px;
+
+}
+
+.uplatnice .primalac {
+    position: absolute;
+    top: 210px;
+    font-size: 12px;
+    left: 390px;
+
+}
+
+.uplatnice .sifra-placanja {
+    position: absolute;
+    top: 70px;
+    font-size: 12px;
+    left: 670px;
+}
+
+.uplatnice .valuta {
+    position: absolute;
+    top: 70px;
+    font-size: 12px;
+    left: 740px;
+}
+
+.uplatnice .iznos {
+    position: absolute;
+    top: 70px;
+    font-size: 12px;
+    left: 810px;
+}
+
+.uplatnice .racun-primaoca {
+    position: absolute;
+    top: 117px;
+    font-size: 12px;
+    left: 690px;
+}
+
+.uplatnice .poziv-na-broj {
+    position: absolute;
+    top: 160px;
+    font-size: 12px;
+    left: 790px;
+}
+
+/***** Proizvodi *****/
+
+.sortirani-proizvodi {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.sortiranje {
+    width: 30%;
+}
+
+.proizvodii {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card h5 {
+    font-size: 1rem;
+}
+
+.card-block form {
+    font-size: 14px;
+}
