@@ -18,29 +18,29 @@ class PageModel {
 
 	public static function getById( $id ) {
 
-		$SQL  = 'SELECT * FROM page WHERE page_id = ?;';
-		$prep = DataBase::getInstance()->prepare( $SQL );
-		$res  = $prep->execute( [ $id ] );
+            $SQL  = 'SELECT * FROM page WHERE page_id = ?;';
+            $prep = DataBase::getInstance()->prepare( $SQL );
+            $res  = $prep->execute( [ $id ] );
 
-		if ( $res ) {
-			return $prep->fetch( PDO::FETCH_OBJ );
-		} else {
-			return null;
-		}
+            if ( $res ) {
+                    return $prep->fetch( PDO::FETCH_OBJ );
+            } else {
+                    return null;
+            }
 
 	}
 
 	public static function getByPermalink( $link ) {
 
-		$SQL  = 'SELECT * FROM page WHERE permalink = ?;';
-		$prep = DataBase::getInstance()->prepare( $SQL );
-		$res  = $prep->execute( [ $link ] );
+            $SQL  = 'SELECT * FROM page WHERE permalink = ?;';
+            $prep = DataBase::getInstance()->prepare( $SQL );
+            $res  = $prep->execute( [ $link ] );
 
-		if ( $res ) {
-			return $prep->fetch( PDO::FETCH_OBJ );
-		} else {
-			return null;
-		}
+            if ( $res ) {
+                    return $prep->fetch( PDO::FETCH_OBJ );
+            } else {
+                    return null;
+            }
 
 	}
 

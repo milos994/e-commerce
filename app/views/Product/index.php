@@ -1,4 +1,4 @@
-<?php include 'app/views/_global/header.php'; ?>
+<?php require_once('app/views/_global/header.php'); ?>
 
     <main>
         <div class="container">
@@ -58,6 +58,7 @@
                         <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
                             <div class="card-block">
                                 <form action="brend">
+                                    <input type="radio" name="jacques-lemans" value="jacques-lemans"> FRANCK MULLER<br>
                                     <input type="radio" name="jacques-lemans" value="jacques-lemans"> JACQUES LEMANS<br>
                                     <input type="radio" name="michael-kors" value="michael-kors"> MICHAEL KORS<br>
                                     <input type="radio" name="armani" value="armani"> ARMANI<br>
@@ -72,16 +73,16 @@
                 </section>
 
                 <section class="proizvodii mt-5 mb-5">
-	                <?php foreach ($DATA['products'] as $product): ?>
+	                <?php foreach (@$DATA['products'] as $product): ?>
                         <div class="proizvod">
                             <figure>
                                 <a href="<?php echo Misc::link('product/' . $product->id); ?>">
                                     <img src="img/ar.jpg" alt="">
-                                    <figcaption><?php echo htmlspecialchars($product->naziv); ?></figcaption>
+                                    <figcaption><?php echo htmlspecialchars($product->name); ?></figcaption>
                                 </a>
                             </figure>
                             <div class="detalji-proizvoda">
-                                <p><?php echo htmlspecialchars($product->cena); ?> din.</p>
+                                <p><?php echo htmlspecialchars($product->amount); ?> din.</p>
                                 <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
                             </div>
                         </div>

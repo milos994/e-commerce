@@ -13,8 +13,14 @@
 <body>
 
 <header>
+    <div class="login">
+        <div class="container text-right">
+            <a href="<?php echo Configuration::BASE_URL ?>login" class="btn btn-sm btn-success my-1">LOGIN</a>
+        </div>
+    </div>
+    <div class="main-header">
 	<div class="container">
-		<nav class="navbar navbar-toggleable-md navbar-default navbar-light navbar-fixed-top">
+		<nav class="navbar navbar-toggleable-md navbar-default navbar-light navbar-fixed-top px-0 py-2">
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-menu"  aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -24,12 +30,13 @@
 			</a>
 
 			<div class="collapse navbar-collapse " id="main-menu">
-				<ul class="nav navbar-nav ml-auto">
-					<li><a class="nav-item nav-link" href="<?php echo Configuration::BASE_URL ?>proizvodi">Proizvodi</a></li>
-					<li><a class="nav-item nav-link" href="<?php echo Configuration::BASE_URL ?>/onama">O nama</a></li>
-					<li><a class="nav-item nav-link" href="<?php echo Configuration::BASE_URL ?>/kontakt">Kontakt</a></li>
-				</ul>
+                            <ul class="nav navbar-nav ml-auto">
+                                <li><a class="nav-item nav-link" href="<?php echo Configuration::BASE_URL ?>proizvodi">Proizvodi</a></li>
+                                <li><a class="nav-item nav-link" href="<?php echo Configuration::BASE_URL ?>/onama">O nama</a></li>
+                                <li><a class="nav-item nav-link" href="<?php echo Configuration::BASE_URL ?>/kontakt">Kontakt</a></li>
+                            </ul>
 			</div>
 		</nav>
 	</div>
+    </div>
 </header>
