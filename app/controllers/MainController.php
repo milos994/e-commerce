@@ -17,9 +17,9 @@ class MainController extends Controller {
     
     
     function index() {
-        if (!Session::exists('user_id')) {
-            Misc::redirect('logout');
-        }
+//        if (!Session::exists('user_id')) {
+//            Misc::redirect('logout');
+//        }
     }
     
     

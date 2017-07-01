@@ -1,4 +1,5 @@
 <?php
+
     require_once 'sys/Autoloader.php';
 
     $uri = filter_input( INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_STRING );

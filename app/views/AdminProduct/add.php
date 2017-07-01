@@ -14,8 +14,8 @@
         <label for="long_text">Detaljan opis: </label>
         <textarea type="text" name="long_text" id="long_text"></textarea><br>
         
-        <label for="user_id">User id: </label>
-        <input type="text" name="user_id" id="user_id"><br>
+        <label for="amount">Cena: </label>
+        <input type="number" name="amount" id="amount"><br>
         
         <label for="prikaz_sata">Prikaz sata: </label>
         <input type="text" name="prikaz_sata" id="prikaz_sata"><br>

@@ -9,10 +9,14 @@ class ProductModel {
      * @return array
      */
     public static function getAll() {
-        $SQL = 'SELECT * FROM product p LEFT JOIN product_price pp ON pp.product_id = p.product_id';
+        $SQL = 'SELECT p.product_id, p.name, p.short_text, p.long_text,'
+                . ' p.prikaz_sata, pp.amount FROM product p LEFT JOIN'
+                . ' product_price pp ON pp.product_id = p.product_id'
+                . ' GROUP BY p.product_id ORDER BY p.product_id';
         $prep = DataBase::getInstance()->prepare($SQL);
         $prep -> execute();
-        return $prep->fetchAll(PDO::FETCH_OBJ);
+        $products = $prep->fetchAll(PDO::FETCH_OBJ);
+        return $products;
     }
     
     /*
@@ -23,7 +27,7 @@ class ProductModel {
     public static function getById($id) {
         $id = explode('/', $id);
         $id = intval(end($id));
-        $SQL = 'SELECT * FROM product WHERE product_id = ?;';
+        $SQL = 'SELECT p.product_id, p.name, p.short_text, p.long_text, p.prikaz_sata, pp.amount FROM product p LEFT JOIN product_price pp ON pp.product_id = p.product_id WHERE p.product_id = ?;';
         $prep = DataBase::getInstance()->prepare($SQL);
         $prep->execute([$id]);
         return $prep->fetch(PDO::FETCH_OBJ);
@@ -56,17 +60,21 @@ class ProductModel {
      * @param string $short_text
      * @param string $long_text
      * @param type $active
-     * @param int $user_id
      * @param string $prikaz_sata
+     * @param int $amount
      * @return int|boolean ID broj zapisa u bazi ako je kreiran ili false ako je doslo do greske 
      */
-    public static function add($name, $short_text, $long_text, $user_id, $prikaz_sata) {
-       $SQL = 'INSERT INTO product (name, short_text, long_text, user_id, prikaz_sata) VALUES (?, ?, ?, ?, ?);';
+    public static function add($name, $short_text, $long_text, $prikaz_sata, $amount) {
+       $SQL = 'INSERT INTO product (name, short_text, long_text, prikaz_sata) VALUES (?, ?, ?, ?);';
        $prep = DataBase::getInstance()->prepare($SQL);
-       $res = $prep->execute([$name, $short_text, $long_text, $user_id, $prikaz_sata]); 
+       $res = $prep->execute([$name, $short_text, $long_text, $prikaz_sata]);
+       $id = DataBase::getInstance()->lastInsertId();
        
-       if ($res) {
-           return DataBase::getInstance()->lastInsertId();
+       if ($res && $id) {
+            $SQL1 = 'INSERT INTO product_price (product_id, amount) VALUES (?, ?);';
+            $prep1 = DataBase::getInstance()->prepare($SQL1);
+            $res1 = $prep1->execute([intval($id), $amount]);
+            return $res1;
        } else {
            return false;
        }
@@ -78,15 +86,39 @@ class ProductModel {
      * @param string $short_text
      * @param string $long_text
      * @param type $active
-     * @param int $user_id
      * @param string $prikaz_sata
+     * @param int $amount
      * @returnboolean
      */
-    public static function edit ($name, $short_text, $long_text, $user_id, $prikaz_sata, $id) {
-       $SQL = 'UPDATE product SET name = ?, short_text = ?, long_text = ?, user_id = ?, prikaz_sata = ?) WHERE product_id = ?';
-       $prep = DataBase::getInstance()->prepare($SQL);
-       var_dump($prep);
-       return $prep->execute([$name, $short_text, $long_text, $user_id, $prikaz_sata, $id]);
+    public static function edit ($name, $short_text, $long_text, $prikaz_sata, $amount, $id) {
+        $id = explode('/', $id);
+        $id = intval(end($id));
+        $SQL = 'UPDATE product SET name = ?, short_text = ?, long_text = ?, prikaz_sata = ? WHERE product_id = ?;';
+        $prep = DataBase::getInstance()->prepare($SQL);
+        $res = $prep->execute([$name, $short_text, $long_text, $prikaz_sata, $id]);
+        
+        if($res) {
+            $SQL = 'SELECT count(*) FROM product_price WHERE product_id = ?;';
+            $prep = Database::getInstance()->prepare($SQL);
+            $res = $prep->execute([$id]);
+            if($res) {
+                $price = $prep->fetchAll(PDO::FETCH_NUM);
+                if($price[0][0] !== 0) {
+                    $SQL = 'UPDATE product_price SET amount = ? WHERE product_id = ?;';
+                    $prep = DataBase::getInstance()->prepare($SQL);
+                    
+                    return $prep->execute([$amount, $id]);
+               } else {
+                    $SQL = 'INSERT INTO product_price (product_id, amount) VALUES (?, ?);';
+                    $prep = DataBase::getInstance()->prepare($SQL);
+
+                    return $prep->execute([$id, $amount]);
+               }
+            }
+            
+        } else {
+            echo 'error';
+        }
     }
     
 }
