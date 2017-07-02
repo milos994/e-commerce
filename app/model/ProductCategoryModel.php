@@ -9,7 +9,7 @@ class ProductCategoryModel {
      * @return array
      */
     public static function getAll() {
-        $SQL = 'SELECT * FROM product_category ORDER BY `name`';
+        $SQL = 'SELECT * FROM product_category ORDER BY product_category_id';
         $prep = DataBase::getInstance()->prepare($SQL);
         $prep -> execute();
         return $prep->fetchAll(PDO::FETCH_OBJ);
@@ -23,14 +23,14 @@ class ProductCategoryModel {
      * @return stdClass|NULL
      */
     public static function getById($id) {
-        $id = intval($id);
-        $SQL = 'SELECT * FROM product_category WHERE $product_category_id = ?;';
+        $id = preg_match("/\/(\d+)$/",$id,$matches);
+        $id = intval($matches[1]);
+        
+        $SQL = 'SELECT * FROM product_category WHERE product_category_id = ?;';
         $prep = DataBase::getInstance()->prepare($SQL);
         $prep->execute([$id]);
         return $prep->fetch(PDO::FETCH_OBJ);
     }
-    
-    
     
     /*
      * Metod koji vraca objekat sa podacima ciji slug je dat kao argument metoda
@@ -62,7 +62,34 @@ class ProductCategoryModel {
         return $prep->fetchAll(PDO::FETCH_OBJ);
     }
     
+    /**
+     * Metod koji vrsi dodavanje zapisa proizvoda u bazu podataka
+     * @param string $name
+     */
+    public static function add($name) {
+       $SQL = 'INSERT INTO product_category (name) VALUES (?);';
+       $prep = DataBase::getInstance()->prepare($SQL);
+       $res = $prep->execute([$name]);
+       $id = DataBase::getInstance()->lastInsertId();
+       
+       if($res) {
+           return intval(DataBase::getInstance()->lastInsertId());
+        } else {
+           return false;
+        }
+    }
     
+    /** Metod koji vrsi izmenu zapisa proizvoda u bazi podataka.
+     * @param int $id
+     * @param string $name
+     */
+    public static function edit ($id, $name) {
+        
+        $SQL = 'UPDATE product_category SET name = ? WHERE product_category_id = ?;';
+        $prep = DataBase::getInstance()->prepare($SQL);
+        $res = $prep->execute([$name, $id]);
+        
+        return $res;
 
-    
+    }     
 }

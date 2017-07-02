@@ -15,7 +15,14 @@
 <header>
     <div class="login">
         <div class="container text-right">
-            <a href="<?php echo Configuration::BASE_URL ?>login" class="btn btn-sm btn-success my-1">LOGIN</a>
+            <?php
+                if(isset($_SESSION['user_id']) && is_int($_SESSION['user_id'])) {
+                    echo 'Welcome ' . $_SESSION['username'] . '.';
+                    echo '<a href="' .Configuration::BASE_URL . 'logout" class="btn btn-sm btn-success my-1">LOGOUT</a>';
+                } else {
+                    echo '<a href="' .Configuration::BASE_URL . 'login" class="btn btn-sm btn-success my-1">LOGIN</a>';
+                }
+            ?>
         </div>
     </div>
     <div class="main-header">

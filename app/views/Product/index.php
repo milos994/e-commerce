@@ -1,4 +1,4 @@
-<?php require_once('app/views/_global/header.php'); ?>
+<?php include ('app/views/_global/header.php'); ?>
 
     <main>
         <div class="container">

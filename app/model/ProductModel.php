@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Ovo je Model koji odgovara tabeli product
  */
@@ -108,12 +109,14 @@ class ProductModel {
                     $prep = DataBase::getInstance()->prepare($SQL);
                     
                     return $prep->execute([$amount, $id]);
-               } else {
+                } else {
                     $SQL = 'INSERT INTO product_price (product_id, amount) VALUES (?, ?);';
                     $prep = DataBase::getInstance()->prepare($SQL);
 
                     return $prep->execute([$id, $amount]);
-               }
+                }
+                
+                //ovde ide kategorija
             }
             
         } else {

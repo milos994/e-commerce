@@ -30,6 +30,21 @@ return [
             'Controller' => 'Product',
             'Method'     => 'index'
 	],
+        [
+            'Pattern'    => '|^admin/kategorije/add?$|',
+            'Controller' => 'AdminCategory',
+            'Method'     => 'add'
+	],
+        [
+            'Pattern'    => '|^admin/kategorije/edit/([0-9]+)/?$|',
+            'Controller' => 'AdminCategory',
+            'Method'     => 'edit'
+	],
+	[
+            'Pattern'    => '|^admin/kategorije/?|',
+            'Controller' => 'AdminCategory',
+            'Method'     => 'index'
+	],
 	[
             'Pattern'    => '|^proizvod/([0-9]+)/?$|',
             'Controller' => 'Product',
