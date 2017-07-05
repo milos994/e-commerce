@@ -4,7 +4,7 @@
         <h1 class="text-center mt-5">Spisak svih proizvoda</h1>
     </header>
     
-    <a class="btn btn-primary mt-3 mb-3" href="./add">Dodaj novi proizvod</a> 
+    <a class="btn btn-primary mt-3 mb-3" href="./proizvodi/add">Dodaj novi proizvod</a> 
     <?php Misc::link('admin/proizvodi/add/', 'Dodaj novi proizvod.'); ?>
     <table class="table table-condensed border mb-5">
         
