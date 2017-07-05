@@ -9,30 +9,20 @@
             <div class="col-12 col-md-8 col-lg-6 mb-5">
                 <div class="border rounded p-4">
                     <form method="post">
-                        <div class="form-group">
-                            <label for="name" class="pl-3">Ime proizvoda: </label>
-                            <input type="text" class="form-control pl-3" name="name" id="name" required><br>
-                        </div>
+                        <label for="name" class="pl-3">Ime proizvoda: </label>
+                        <input type="text" class="form-control pl-3" name="name" id="name" required><br>
 
-                        <div class="form-group">
-                            <label for="short_text" class="pl-3">Kratak opis: </label>
-                            <input type="text" name="short_text" class="form-control pl-3" id="short_text"><br>
-                        </div>
+                        <label for="short_text" class="pl-3">Kratak opis: </label>
+                        <input type="text" name="short_text" class="form-control pl-3" id="short_text"><br>
 
-                        <div class="form-group">
-                            <label for="long_text" class="pl-3">Detaljan opis: </label>
-                            <textarea rows="9" type="text" name="long_text" class="form-control pl-3" id="long_text"></textarea><br>
-                        </div>
+                        <label for="long_text" class="pl-3">Detaljan opis: </label>
+                        <textarea rows="9" type="text" name="long_text" class="form-control pl-3" id="long_text"></textarea><br>
 
-                        <div class="form-group">
-                            <label for="amount" class="pl-3">Cena: </label>
-                            <input type="number" class="form-control pl-3" name="amount" id="amount"><br>
-                        </div>
+                        <label for="amount" class="pl-3">Cena: </label>
+                        <input type="number" class="form-control pl-3" name="amount" id="amount"><br>
 
-                        <div class="form-group">
-                            <label for="prikaz_sata" class="pl-3">Prikaz sata: </label>
-                            <input type="text" class="form-control pl-3" name="prikaz_sata" id="prikaz_sata"><br>
-                        </div>
+                        <label for="prikaz_sata" class="pl-3">Prikaz sata: </label>
+                        <input type="text" class="form-control pl-3" name="prikaz_sata" id="prikaz_sata"><br>
 
                         <button type="submit" class="btn btn-success">Dodaj proizvod</button>
                     </form>
