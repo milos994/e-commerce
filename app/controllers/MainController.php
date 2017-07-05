@@ -1,5 +1,6 @@
 <?php
-include 'sys/Session.php';
+    include 'sys/Session.php';
+
 session_start();
 /*
  * Ovo je osnovni kontroler aplikacije koji se koristi za izvrsavanje 
@@ -38,14 +39,14 @@ class MainController extends Controller {
                 $password = filter_input(INPUT_POST, 'password');
                 
                 if (!preg_match('/^[a-z0-9]{4,}$/', $username) or !preg_match('/^[a-z0-9]{4,}$/', $password)) {
-                    $this->set('message', 'Invalid username or password format.');
+                    $this->set('message', 'Neispravno ste uneli korisničko ime ili lozinku.');
                     return;
                 }
                 $passwordHash = hash('sha512', $password . Configuration::USER_SALT);
                 $user = UserModel::getByUsernameAndPasswordHash($username, $passwordHash);
                 
                 if (!$user) {
-                    $this->set('message', 'Username or password are incorrect or the user is not active.');
+                    $this->set('message', 'Korisničko ime ili lozinka nisu dobro uneti ili korisnik nije aktivan.');
                     return;
                 }
                 

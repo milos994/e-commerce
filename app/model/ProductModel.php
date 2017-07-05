@@ -11,12 +11,14 @@ class ProductModel {
      */
     public static function getAll() {
         $SQL = 'SELECT p.product_id, p.name, p.short_text, p.long_text,'
-                . ' p.prikaz_sata, pp.amount FROM product p LEFT JOIN'
-                . ' product_price pp ON pp.product_id = p.product_id'
-                . ' GROUP BY p.product_id ORDER BY p.product_id';
+        . ' p.prikaz_sata, pp.amount FROM product p LEFT JOIN'
+        . ' product_price pp ON pp.product_id = p.product_id'
+        . ' GROUP BY p.product_id ORDER BY p.product_id';
+        
         $prep = DataBase::getInstance()->prepare($SQL);
         $prep -> execute();
         $products = $prep->fetchAll(PDO::FETCH_OBJ);
+        
         return $products;
     }
     
@@ -124,4 +126,10 @@ class ProductModel {
         }
     }
     
+    public static function delete($product_id) {
+        $product_id = intval($product_id);
+        $SQL = 'DELETE FROM product WHERE product_id = ?;';
+        $prep = DataBase::getInstance()->prepare($SQL);
+        return $prep->execute([$product_id]);
+    }    
 }

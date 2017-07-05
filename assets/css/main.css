@@ -441,3 +441,19 @@ footer p {
 .card-block form {
     font-size: 14px;
 }
+
+.red-text {
+    color: red;
+}
+
+.teal-text {
+    color: #009688;
+}
+
+.border {
+    border: 1px solid #0275d8;
+}
+
+.border-top {
+    border: 1px solid #0275d8;
+}

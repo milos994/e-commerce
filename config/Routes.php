@@ -25,6 +25,11 @@ return [
             'Controller' => 'AdminProduct',
             'Method'     => 'edit'
 	],
+        [
+            'Pattern'    => '|^admin/proizvodi/delete/([0-9]+)/?$|',
+            'Controller' => 'AdminProduct',
+            'Method'     => 'delete'
+	],
 	[
             'Pattern'    => '|^proizvodi/?|',
             'Controller' => 'Product',

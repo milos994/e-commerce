@@ -4,15 +4,15 @@ class PageModel {
 
 	public static function getAll() {
 
-		$SQL  = 'SELECT * FROM page;';
-		$prep = DataBase::getInstance()->prepare( $SQL );
-		$res  = $prep->execute();
+            $SQL  = 'SELECT * FROM page;';
+            $prep = DataBase::getInstance()->prepare( $SQL );
+            $res  = $prep->execute();
 
-		if ( $res ) {
-			return $prep->fetchAll( PDO::FETCH_OBJ );
-		} else {
-			return [];
-		}
+            if ( $res ) {
+                    return $prep->fetchAll( PDO::FETCH_OBJ );
+            } else {
+                    return [];
+            }
 
 	}
 

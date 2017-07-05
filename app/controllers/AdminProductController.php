@@ -62,4 +62,24 @@ class AdminProductController extends AdminController {
             $this->set('message', 'Doslo je do greske prilikom izmene podataka o proizvodu.');
         }
     }
+    
+    public function delete ($id) {
+        
+        $product = ProductModel::getById($id);
+        $this->set('product', $product);
+
+        if ($_POST) {
+            $confirmed = filter_input(INPUT_POST, 'confirmed', FILTER_SANITIZE_NUMBER_INT);
+           
+            if ($confirmed == 1) {
+                $res = ProductModel::delete($id);
+                if ($res) {
+                    Misc::redirect('admin/proizvodi/');
+                } else {
+                    $this->setData('message', "Proizvod je uspeŠno obrisan!");
+                }
+            }
+        }
+    }
 }
+
