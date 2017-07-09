@@ -1,60 +1,63 @@
 <?php
-include 'sys/AdminController.php';
-/**
- * Klasa kontrolera admin panela aplikacije za rad sa kategorijama satova
- */
+
 class AdminCategoryController extends AdminController {
-    /**
-     * Indeks metod admin kontrolera za rad sa kategorijama. Prikazuje spisak svih kategorija.
-     */
+
     public function index() {
-        $this->set('kategorije', ProductCategoryModel::getAll());
+        $kategorije = AdminCategoryModel::getAll();
+        $this->set('kategorije', $kategorije);
     }
-    
-    /**
-     * Ovaj metod prikazuje forular za dodavanje ili vrsi dodavanje ako su podaci poslati HTTP POST metodom
-     * @return void
-     */
-    public function add () {
-        
-        if(!$_POST) return;
-        $name = filter_input(INPUT_POST, 'name');
-                
-        $res = ProductCategoryModel::add($name);
-        
-        if (is_int($res)) {
-            Misc::redirect('admin/kategorije/');
-        } else {
-            $this->set('message', 'Doslo je do greske prilikom dodavanja kategorije u bazu podataka.');
+
+    public function add() {
+        if ($_POST) {
+            $category_name = filter_input(INPUT_POST, 'category_name');
+            $slug = filter_input(INPUT_POST, 'slug');
+
+            $res = AdminCategoryModel::add($category_name, $slug);
+
+            if ($res) {
+                Misc::redirect('admin/kategorije/');
+            } else {
+                $this->set('message', 'Doslo je do greske prilikom dodavanja kategorije u bazu podataka.');
+            }
         }
     }
-    
-    /** 
-     * Ovaj metod prikazuje forular za izmenu ili vrsi izmenu ako su podaci poslati HTTP POST metodom
-     * @return void
-     */
-    public function edit ($id) {
-        
-        $category = ProductCategoryModel::getById($id);
-        
-        if (!$category) {
-            Misc::redirect('admin/kategorije/');
-        }
+
+    public function edit($id) {
+        $category = AdminCategoryModel::getById($id);
         $this->set('category', $category);
-    
-        if(!$_POST) return;
-        
-        $id = $category->product_category_id;
-        $name = filter_input(INPUT_POST, 'name');
-                
-        $res = ProductCategoryModel::edit($id, $name);
-       
-        if ($res) {
-            Misc::redirect('admin/kategorije/');
+
+        if ($_POST) {
+            $category_name = filter_input(INPUT_POST, 'category_name', FILTER_SANITIZE_STRING);
+            $slug = filter_input(INPUT_POST, 'slug');
+
+            $res = AdminCategoryModel::edit($category_name, $slug, $id);
+            if ($res) {
+                Misc::redirect('admin/kategorije/');
+            } else {
+                $this->set('message', 'Doslo je do greske prilikom izmene podataka o kategoriji.');
+            }
         } else {
             $this->set('message', 'Doslo je do greske prilikom izmene podataka o kategoriji.');
         }
     }
+
+    public function delete($id) {
+
+        $category = AdminCategoryModel::getById($id);
+        $this->set('category', $category);
+
+        if ($_POST) {
+            $confirmed = filter_input(INPUT_POST, 'confirmed', FILTER_SANITIZE_NUMBER_INT);
+
+            if ($confirmed == 1) {
+                $res = AdminCategoryModel::delete($id);
+                if ($res) {
+                    Misc::redirect('admin/kategorije/');
+                } else {
+                    $this->setData('message', "Proizvod je uspeŠno obrisan!");
+                }
+            }
+        }
+    }
+
 }
-
-

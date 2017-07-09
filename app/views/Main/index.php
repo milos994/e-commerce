@@ -1,4 +1,4 @@
-<?php include 'app/views/_global/header.php'; ?>
+<?php require_once 'app/views/_global/header.php'; ?>
 
     <main>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -197,4 +197,4 @@
         </div>
     </main>
 
-<?php include 'app/views/_global/footer.php'; ?>
+<?php require_once 'app/views/_global/footer.php'; ?>

@@ -1,4 +1,4 @@
-<?php include 'app/views/_global/header.php'; ?>
+<?php require_once  'app/views/_global/header.php'; ?>
 
 <article class="text-center my-5">
     <header>
@@ -8,10 +8,11 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6 mb-5">
                 <div class="border rounded p-4">
-                    <form method="post">
-                        <label class="pl-3" for="name">Ime kategorije: </label>
-                        <input class="form-control pl-3" type="text" name="name" id="name" required value="<?php echo htmlspecialchars($DATA['category']->name);?>"><br>
-                        
+                    <form method="post" action="<?php echo Configuration::BASE_URL; ?>admin/kategorije/edit/<?php echo $DATA['category']->product_category_id?>">
+                        <label class="pl-3" for="category_name">Ime kategorije: </label>
+                        <input class="form-control pl-3" type="text" name="category_name" id="category_name" required value="<?php echo htmlspecialchars($DATA['category']->category_name);?>"><br>
+                        <label class="pl-3" for="slug">Slug: </label>
+                        <input class="form-control pl-3" type="text" name="slug" id="slug" required value="<?php echo htmlspecialchars($DATA['category']->slug);?>"><br>
                         <button class="btn btn-success mt-3" type="submit">Izmeni kategoriju</button>
                     </form>
                 </div>
@@ -21,4 +22,4 @@
 
 </article>
 
-<?php include 'app/views/_global/footer.php'; ?>
+<?php require_once 'app/views/_global/footer.php'; ?>

@@ -73,20 +73,20 @@
                 </section>
 
                 <section class="proizvodii mt-5 mb-5">
-	                <?php foreach (@$DATA['products'] as $product): ?>
-                        <div class="proizvod">
-                            <figure>
-                                <a href="<?php echo Misc::link('product/' . $product->id); ?>">
-                                    <img src="img/ar.jpg" alt="">
-                                    <figcaption><?php echo htmlspecialchars($product->name); ?></figcaption>
-                                </a>
-                            </figure>
-                            <div class="detalji-proizvoda">
-                                <p><?php echo htmlspecialchars($product->amount); ?> din.</p>
-                                <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
-                            </div>
+                    <?php foreach (@$DATA['products'] as $product): ?>
+                    <div class="proizvod">
+                        <figure>
+                            <a href="<?php echo Misc::link('product/' . $product->id); ?>">
+                                <img src="<?php echo Configuration::BASE_URL ?>assets/img/ar.jpg" alt="">
+                                <figcaption><?php echo htmlspecialchars($product->name); ?></figcaption>
+                            </a>
+                        </figure>
+                        <div class="detalji-proizvoda">
+                            <p><?php echo htmlspecialchars($product->amount); ?> din.</p>
+                            <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
                         </div>
-	                <?php endforeach; ?>
+                    </div>
+                    <?php endforeach; ?>
                 </section>
 
             </div>

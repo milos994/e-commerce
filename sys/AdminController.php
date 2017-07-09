@@ -15,7 +15,12 @@ class AdminController extends Controller {
      */
     final function __pre() {
         if(!Session::exists('user_id')) {
-            Misc::redirect('login');
+            Misc::redirect('logout');
+        }
+    }
+    final function __preAdmin() {
+        if(!Session::exists('admin_id')) {
+            Misc::redirect('admin');
         }
     }
 }

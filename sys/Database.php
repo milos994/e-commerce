@@ -1,26 +1,15 @@
 <?php
+    final class DataBase {
 
-class DataBase {
+        private static $db = null;
 
-    private static $db = null;
-
-    private function __construct() {
-
-    }
-
-    public static function getInstance() {
-
-        if ( static::$db == null ) {                                         # Konektovanje se izvrsava samo 1
-            static::$db = new PDO( 'mysql:host=' . Configuration::DB_HOST .  # Adresa servera
-                                   ';dbname=' . Configuration::DB_NAME .     # Ime baze podataka
-                                   ';charset=utf8',                          # Unikodna podrska
-                                   Configuration::DB_USER,                   # Korisnik za bazu
-                                   Configuration::DB_PASS );                 # Lozinka tog korisnika
-            static::$db->setAttribute( PDO::ATTR_EMULATE_PREPARES, false );  # Ne zelimo da server testira izraze
+        public static function getInstance() {
+            if (self::$db === null) {
+                self::$db = new PDO('mysql:host=' . Configuration::DB_HOST . ';dbname=' . Configuration::DB_BASE . ';charset=utf8', Configuration::DB_USER, Configuration::DB_PASS);
+                self::$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
+            }
+            return self::$db;
         }
 
-        return static::$db; # Vracamo primerak konekcije na bazu podatala
-
     }
 
-}
