@@ -1,42 +1,22 @@
 <?php
-/*
- * Ovo je Model koji odgovara tabeli product_category 
- */
-class ProductCategoryModel {
+
+class AdminCategoryModel implements ModelInterface{
     
-    /*
-     * Metod koji vraca spisak svih kategorija proizvoda poredjanih po imenu
-     * @return array
-     */
     public static function getAll() {
-        $SQL = 'SELECT * FROM product_category ORDER BY product_category_id';
+        $SQL = 'SELECT * FROM product_category ORDER BY category_name;';
         $prep = DataBase::getInstance()->prepare($SQL);
         $prep -> execute();
         return $prep->fetchAll(PDO::FETCH_OBJ);
     }
-    
-    
-    
-    /*
-     * Metod koji vraca objekat sa podacima ciji je product_category_id dat kao argument metoda
-     * @param int $product_category_id
-     * @return stdClass|NULL
-     */
+
     public static function getById($id) {
-        $id = preg_match("/\/(\d+)$/",$id,$matches);
-        $id = intval($matches[1]);
-        
+        $id = intval($id);
         $SQL = 'SELECT * FROM product_category WHERE product_category_id = ?;';
         $prep = DataBase::getInstance()->prepare($SQL);
         $prep->execute([$id]);
         return $prep->fetch(PDO::FETCH_OBJ);
     }
-    
-    /*
-     * Metod koji vraca objekat sa podacima ciji slug je dat kao argument metoda
-     * @param string $slug
-     * @return stdClass|NULL
-     */
+
     public static function getBySlug($slug) {
         $SQL = 'SELECT * FROM product_category WHERE slug = ?;';
         $prep = DataBase::getInstance()->prepare($SQL);
@@ -44,52 +24,22 @@ class ProductCategoryModel {
         return $prep->fetch(PDO::FETCH_OBJ);
     }
     
-    /*
-     * Metod koji vraca niz objekata sa podacima kategorije proizvoda ciji ID broj je dat kao argument 
-     * @param int $id broj kategorije proizvoda
-     * @return array
-     */
-    public static function getProductsByProductCategoryId($id) {
-        $SQL = 'SELECT
-                  *, pp.amount
-                FROM
-                  product p
-                  INNER JOIN product_product_category ppc ON ppc.product_id = p.product_id
-                  LEFT JOIN product_price pp ON pp.product_id = p.product_id
-                WHERE ppc.product_category_id = :id';
-        $prep = DataBase::getInstance()->prepare($SQL);
-        $prep->execute([$id]);
-        return $prep->fetchAll(PDO::FETCH_OBJ);
-    }
-    
-    /**
-     * Metod koji vrsi dodavanje zapisa proizvoda u bazu podataka
-     * @param string $name
-     */
-    public static function add($name) {
-       $SQL = 'INSERT INTO product_category (name) VALUES (?);';
+    public static function add($category_name, $slug) {
+       $SQL = 'INSERT INTO product_category (category_name, slug) VALUES (?, ?);';
        $prep = DataBase::getInstance()->prepare($SQL);
-       $res = $prep->execute([$name]);
-       $id = DataBase::getInstance()->lastInsertId();
-       
-       if($res) {
-           return intval(DataBase::getInstance()->lastInsertId());
-        } else {
-           return false;
-        }
+       return $prep->execute([$category_name, $slug]);
     }
-    
-    /** Metod koji vrsi izmenu zapisa proizvoda u bazi podataka.
-     * @param int $id
-     * @param string $name
-     */
-    public static function edit ($id, $name) {
-        
-        $SQL = 'UPDATE product_category SET name = ? WHERE product_category_id = ?;';
-        $prep = DataBase::getInstance()->prepare($SQL);
-        $res = $prep->execute([$name, $id]);
-        
-        return $res;
 
+    public static function edit ($category_name, $slug, $id) {
+        $SQL = 'UPDATE product_category SET category_name = ?, slug = ? WHERE product_category_id = ?;';
+        $prep = DataBase::getInstance()->prepare($SQL);
+        return $prep->execute([$category_name, $slug, $id]);
     }     
+    
+     public static function delete($id) {
+        $id = intval($id);
+        $SQL = 'DELETE FROM product_category WHERE product_category_id = ?;';
+        $prep = DataBase::getInstance()->prepare($SQL);
+        return $prep->execute([$id]);
+    }  
 }
