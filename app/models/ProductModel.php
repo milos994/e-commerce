@@ -23,10 +23,6 @@ class ProductModel implements ModelInterface{
         $prep->execute([$id]);
         return $prep->fetch(PDO::FETCH_OBJ);
     }
-
-    public static function edit ($name, $short_text, $long_text, $prikaz_sata, $amount, $id) {
-        
-    }
     
     public static function delete($id) {
         $id = intval($id);

@@ -30,7 +30,12 @@ class AdminMainController extends Controller {
         if (!empty($_POST)) {
             $username = filter_input(INPUT_POST, 'username');
             $password = filter_input(INPUT_POST, 'password');
-
+            
+            if (!preg_match('/^[a-z0-9]{4,}$/', $username) or !preg_match('/^[a-z0-9]{4,}$/', $password)) {
+                $this->set('message', 'Neispravno ste uneli korisničko ime ili lozinku.');
+                return;
+            }
+            
             $passwordHash = hash('sha512', $password . Configuration::USER_SALT);
 
             $admin = AdminModel::getByUsernameAndPasswordHash($username, $passwordHash);

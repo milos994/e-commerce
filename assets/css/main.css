@@ -71,6 +71,13 @@ button {
     padding: 5px;
 }
 
+figcaption {
+    font-weight: bold;
+    font-size: 23px;
+    line-height: 1;
+    padding: 5px;
+    color: black;
+}
 .proizvod {
     margin: 0 1rem 1rem 0;
     width: 200px;
@@ -90,6 +97,7 @@ figure > img {
 
 .detalji-proizvoda p {
     margin-bottom: 1rem;
+    color: black;
 }
 
 .izjave-nasih-kupaca {

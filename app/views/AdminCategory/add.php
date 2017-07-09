@@ -10,9 +10,11 @@
                 <div class="border rounded p-4">
                     <form method="post">
                         <label class="pl-3">Ime kategorije: </label>
-                        <input class="form-control pl-3" type="text" name="category_name" id="category_name" required><br>
+                        <input class="form-control pl-3" type="text" name="category_name" id="category_name" required
+                               pattern="[A-Z][a-z]+" title="Ime kategorije mora početi veliki slovom!"><br>
                         <label class="pl-3">Slug: </label>
-                        <input class="form-control pl-3" type="text" name="slug" id="slug" required><br>
+                        <input class="form-control pl-3" type="text" name="slug" id="slug" required 
+                               pattern="[a-z]+" title="Slug kategorije mora početi malim slovom!"><br>
                         
                         <button class="btn btn-success mt-3" type="submit">Dodaj kategoriju</button>
                         

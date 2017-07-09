@@ -75,17 +75,18 @@
                 <section class="proizvodii mt-5 mb-5">
                     <?php foreach (@$DATA['products'] as $product): ?>
                     <div class="proizvod">
-                        <figure>
-                            <a href="<?php echo Misc::link('product/' . $product->id); ?>">
-                                <img src="<?php echo Configuration::BASE_URL ?>assets/img/ar.jpg" alt="">
+                        <a href="<?php echo Misc::link('product/' . $product->product_id); ?>">
+                            <figure>
+                                <img src="<?php echo Configuration::BASE_URL ?>assets/img/<?php echo $product->product_id?>.jpg">
                                 <figcaption><?php echo htmlspecialchars($product->name); ?></figcaption>
-                            </a>
-                        </figure>
+                            </figure>
+                        </a>
                         <div class="detalji-proizvoda">
                             <p><?php echo htmlspecialchars($product->amount); ?> din.</p>
                             <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
                         </div>
                     </div>
+                         
                     <?php endforeach; ?>
                 </section>
 

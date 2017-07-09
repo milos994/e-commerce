@@ -26,106 +26,20 @@
         <div class="container">
             <h3>Najnoviji proizvodi</h3>
             <section class="proizvodi">
-                <div class="proizvod">
-                    <figure>
-                        <img src="<?php echo Configuration::BASE_URL ?>/assets/img/ar.jpg" alt="">
-                        <figcaption>ARMANI AR1949-10</figcaption>
-                    </figure>
-                    <div class="detalji-proizvoda">
-                        <p>32,900 din.</p>
-                        <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
+                <?php foreach (@$DATA['products'] as $product): ?>
+                    <div class="proizvod">
+                        <a href="<?php echo Misc::link('product/' . $product->id); ?>">
+                            <figure>
+                                <img src="<?php echo Configuration::BASE_URL ?>assets/img/ar.jpg" alt="">
+                                <figcaption><?php echo htmlspecialchars($product->name); ?></figcaption>
+                            </figure>
+                        </a>
+                        <div class="detalji-proizvoda">
+                            <p><?php echo htmlspecialchars($product->amount); ?> din.</p>
+                            <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
+                        </div>
                     </div>
-                </div>
-                <div class="proizvod">
-                    <figure>
-                        <img src="<?php echo Configuration::BASE_URL ?>/assets/img/jl.jpg" alt="">
-                        <figcaption>JACQUES LEMANS 10MN</figcaption>
-                    </figure>
-                    <div class="detalji-proizvoda">
-                        <p>29,999 din.</p>
-                        <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
-                    </div>
-                </div>
-                <div class="proizvod">
-                    <figure>
-                        <img src="<?php echo Configuration::BASE_URL ?>/assets/img/mkjpg.jpg" alt="">
-                        <figcaption>MICHAEL KORS MK6474</figcaption>
-                    </figure>
-                    <div class="detalji-proizvoda">
-                        <p>32,390 din.</p>
-                        <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
-                    </div>
-                </div>
-                <div class="proizvod">
-                    <figure>
-                        <img src="<?php echo Configuration::BASE_URL ?>/assets/img/fossil.jpg" alt="">
-                        <figcaption>FOSSIL JR1009-10</figcaption>
-                    </figure>
-                    <div class="detalji-proizvoda">
-                        <p>20,999 din.</p>
-                        <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
-                    </div>
-                </div>
-                <div class="proizvod">
-                    <figure>
-                        <img src="<?php echo Configuration::BASE_URL ?>/assets/img/soliver.jpg" alt="">
-                        <figcaption>S.OLIVER SO-227-61</figcaption>
-                    </figure>
-                    <div class="detalji-proizvoda">
-                        <p>10,000 din.</p>
-                        <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
-                    </div>
-                </div>
-                <div class="proizvod">
-                    <figure>
-                        <img src="<?php echo Configuration::BASE_URL ?>/assets/img/citizen.jpg" alt="">
-                        <figcaption>CITIZEN BM910-109</figcaption>
-                    </figure>
-                    <div class="detalji-proizvoda">
-                        <p>22,999 din.</p>
-                        <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
-                    </div>
-                </div>
-                <div class="proizvod">
-                    <figure>
-                        <img src="<?php echo Configuration::BASE_URL ?>/assets/img/fosill-z.jpg" alt="">
-                        <figcaption>FOSSIL CH308810</figcaption>
-                    </figure>
-                    <div class="detalji-proizvoda">
-                        <p>16,599 din.</p>
-                        <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
-                    </div>
-                </div>
-                <div class="proizvod">
-                    <figure>
-                        <img src="<?php echo Configuration::BASE_URL ?>/assets/img/fosill-1-z.jpg" alt="">
-                        <figcaption>FOSSIL ES329-F10</figcaption>
-                    </figure>
-                    <div class="detalji-proizvoda">
-                        <p>12,540 din.</p>
-                        <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
-                    </div>
-                </div>
-                <div class="proizvod">
-                    <figure>
-                        <img src="<?php echo Configuration::BASE_URL ?>/assets/img/mk2.jpg" alt="">
-                        <figcaption>MICHAEL KORS MK2618</figcaption>
-                    </figure>
-                    <div class="detalji-proizvoda">
-                        <p>25,100 din.</p>
-                        <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
-                    </div>
-                </div>
-                <div class="proizvod">
-                    <figure>
-                        <img src="<?php echo Configuration::BASE_URL ?>/assets/img/c1.jpg" alt="">
-                        <figcaption>CITIZEN CA4215-04W</figcaption>
-                    </figure>
-                    <div class="detalji-proizvoda">
-                        <p>22,091 din.</p>
-                        <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </section>
         </div>
         <div class="clearfix"></div>

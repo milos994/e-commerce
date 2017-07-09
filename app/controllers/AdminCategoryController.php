@@ -12,6 +12,11 @@ class AdminCategoryController extends AdminController {
             $category_name = filter_input(INPUT_POST, 'category_name');
             $slug = filter_input(INPUT_POST, 'slug');
 
+            if (!preg_match('/^[A-Z][a-z]+/', $category_name) or ! preg_match('/^[a-z]+/', $slug)) {
+                $this->set('message', 'Neispravno ste uneli ime kategorije ili slug.');
+                return;
+            }
+
             $res = AdminCategoryModel::add($category_name, $slug);
 
             if ($res) {
@@ -29,6 +34,11 @@ class AdminCategoryController extends AdminController {
         if ($_POST) {
             $category_name = filter_input(INPUT_POST, 'category_name', FILTER_SANITIZE_STRING);
             $slug = filter_input(INPUT_POST, 'slug');
+
+            if (!preg_match('/^[A-Z][a-z]+/', $category_name) or ! preg_match('/^[a-z]+/', $slug)) {
+                $this->set('message', 'Neispravno ste uneli ime kategorije ili slug.');
+                return;
+            }
 
             $res = AdminCategoryModel::edit($category_name, $slug, $id);
             if ($res) {

@@ -9,12 +9,12 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <input type="text" name="name" id="name" class="form-control input-sm" placeholder="Ime">
+                            <input type="text" name="name" id="name" class="form-control input-sm" placeholder="Ime" pattern="^[A-Z][a-z]+" title="Ime mora početi veliki slovom!">
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <input type="text" name="surname" id="surname" class="form-control input-sm" placeholder="Prezime">
+                            <input type="text" name="surname" id="surname" class="form-control input-sm" placeholder="Prezime" pattern="^[A-Z][a-z]+" title="Prezime mora početi veliki slovom!">
                         </div>
                     </div>
                 </div>
@@ -22,11 +22,11 @@
                     <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email adresa">
                 </div>
                 <div class="form-group">
-                    <input type="text" name="username" id="username" class="form-control input-sm" placeholder="Korisnicko ime">
+                    <input type="text" name="username" id="username" class="form-control input-sm" placeholder="Korisnicko ime" pattern="^[a-z0-9]{4,}" title="Username se mora sastojati od minimum 4 karaktera!">
                 </div>
 
                 <div class="form-group">
-                    <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Lozinka">
+                    <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Lozinka" pattern="^[a-z0-9]{4,}" title="Password se mora sastojati od minimum 4 karaktera!">
                 </div>
 
                 <button type="submit" class="btn btn-info btn-block">
