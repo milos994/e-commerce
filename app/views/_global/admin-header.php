@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<?php
-    if(!isset($_SESSION)) { 
-        session_start(); 
-    } 
-?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,11 +16,11 @@
     <div class="login">
         <div class="container text-right">
             <?php
-                if(isset($_SESSION['user_id']) && is_int($_SESSION['user_id'])) {
+                if(isset($_SESSION['admin_id']) && is_int($_SESSION['admin_id'])) {
                     echo 'Ulogovani ste kao ' . $_SESSION['username'] . '. ';
-                    echo '<a href="' .Configuration::BASE_URL . 'logout" class="btn btn-sm btn-success my-1">Izloguj se</a>';
+                    echo '<a href="' .Configuration::BASE_URL . 'adminlogout" class="btn btn-sm btn-success my-1">Izloguj se</a>';
                 } else {
-                    echo '<a href="' .Configuration::BASE_URL . 'login" class="btn btn-sm btn-success my-1">Uloguj se</a>';
+                    echo '<a href="' .Configuration::BASE_URL . 'admin" class="btn btn-sm btn-success my-1">Uloguj se</a>';
                 }
             ?>
         </div>
@@ -43,9 +38,9 @@
 
                 <div class="collapse navbar-collapse " id="main-menu">
                     <ul class="nav navbar-nav ml-auto">
-                        <li><a class="nav-item nav-link" href="<?php echo Configuration::BASE_URL ?>proizvodi">Proizvodi</a></li>
-                        <li><a class="nav-item nav-link" href="<?php echo Configuration::BASE_URL ?>/onama">O nama</a></li>
-                        <li><a class="nav-item nav-link" href="<?php echo Configuration::BASE_URL ?>/kontakt">Kontakt</a></li>
+                        <li><a class="nav-item nav-link" href="<?php echo Configuration::BASE_URL ?>admin/proizvodi">Proizvodi</a></li>
+                        <li><a class="nav-item nav-link" href="<?php echo Configuration::BASE_URL ?>admin/kategorije">Kategorije</a></li>
+                        <li><a class="nav-item nav-link" href="<?php echo Configuration::BASE_URL ?>admin/korisnici">Korisnici</a></li>
                     </ul>
                 </div>
             </nav>

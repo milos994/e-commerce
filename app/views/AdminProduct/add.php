@@ -1,4 +1,4 @@
-<?php include 'app/views/_global/header.php'; ?>
+<?php require_once 'app/views/_global/admin-header.php'; ?>
 
 <article class="text-center my-5">
     <header>
@@ -52,4 +52,4 @@
 
 </article>
 
-<?php include 'app/views/_global/footer.php'; ?>
+<?php require_once 'app/views/_global/footer.php'; ?>

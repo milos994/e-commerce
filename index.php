@@ -1,14 +1,15 @@
 <?php
 
 require_once 'sys/Autoloader.php';
+Session::begin();
+//Session::end();
+
 
 
 $Request = $_SERVER['REQUEST_URI'];
 
 $Request = substr($Request, strlen(Configuration::BASE_PATH));
 $Routes = require_once 'Routes.php';
-
-
 
 $Arguments = [];
 $FoundRoute = null;
@@ -30,6 +31,12 @@ require_once $controllerPath;
 $imeKlase = $FoundRoute['Controller'] . 'Controller';
 $worker = new $imeKlase;
 
+if ($FoundRoute['Controller'] == 'AdminMain' or $FoundRoute['Controller'] == 'AdminProduct' or $FoundRoute['Controller'] == 'AdminCategory') {
+    if (method_exists($worker, '__preAdmin')) {
+        call_user_func([$worker, '__preAdmin']);
+    }
+} 
+
 if (!method_exists($worker, $FoundRoute['Method'])) {
     die('This controller does not have the requested method.');
 }
@@ -42,3 +49,4 @@ if (method_exists($worker, $Method)) {
 
 $DATA = $worker->get();
 require 'app/views/' . $FoundRoute['Controller'] . '/' . $FoundRoute['Method'] . '.php';
+

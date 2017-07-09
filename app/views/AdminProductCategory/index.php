@@ -1,4 +1,5 @@
-<?php include 'app/views/_global/header.php'; ?>
+<?php require_once 'app/views/_global/admin-header.php'; ?>
+
 <article class="container blok">
     <header>
         <h1 class="text-center mt-5">Spisak svih kategorija</h1>
@@ -28,4 +29,4 @@
     </table>
 </article>
 
-<?php include 'app/views/_global/footer.php'; ?>
+<?php require_once 'app/views/_global/footer.php'; ?>

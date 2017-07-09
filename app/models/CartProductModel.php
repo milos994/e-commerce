@@ -2,7 +2,7 @@
 /*
  * Ovo je Model koji odgovara tabeli cart_product 
  */
-class cartProductModel implements ModelInterface {
+class CartProductModel implements ModelInterface {
     /*
      * Metod koji vraca spisak svih cart_product poredjanih po id broju 
      * @return array

@@ -1,6 +1,6 @@
 <?php
 
-include 'sys/AdminController.php';
+
 
 /**
  * Klasa kontrolera admin panela aplikacije za rad sa proizvodima
@@ -56,10 +56,10 @@ class AdminProductController extends AdminController {
     public function edit($product_id) {
         $kategorije = AdminCategoryModel::getAll();
         $this->set('kategorije', $kategorije);
-        $proizvod = AdminCategoryModel::getById($product_id);
-         $this->set('proizvod', $proizvod);
+        $proizvod = AdminProductModel::getById($product_id);
+        $this->set('proizvod', $proizvod);
          
-         $name = filter_input(INPUT_POST, 'name');
+        $name = filter_input(INPUT_POST, 'name');
         $short_text = filter_input(INPUT_POST, 'short_text');
         $long_text = filter_input(INPUT_POST, 'long_text');
         $amount = filter_input(INPUT_POST, 'amount');

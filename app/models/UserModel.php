@@ -3,7 +3,7 @@
  * Ovo je Model koji odgovara tabeli user 
  */
 // implements ModelInterface
-class UserModel {
+class UserModel implements ModelInterface{
 
     public static function getAll() {
         $SQL = 'SELECT * FROM user;';
