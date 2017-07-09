@@ -15,7 +15,7 @@
                         <input class="form-control pl-3" type="text" name="slug" id="slug" required><br>
                         
                         <button class="btn btn-success mt-3" type="submit">Dodaj kategoriju</button>
-                        <a href="<?php echo Configuration::BASE_URL; ?>admin/kategorije">Odustani</a>
+                        
                     </form>
                 </div>
             </div>
