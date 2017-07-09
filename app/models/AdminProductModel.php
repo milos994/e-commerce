@@ -1,10 +1,6 @@
 <?php
 class AdminProductModel implements ModelInterface{
-    
-    /*
-     * Metod koji vraca spisak svih proizvoda poredjanih po id broju 
-     * @return array
-     */
+
     public static function getAll() {
         $SQL = 'Select * from product inner JOIN product_category on product.product_category_id = product_category.product_category_id;';
         

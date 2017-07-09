@@ -1,10 +1,5 @@
 <?php
 
-/*
- * Ovo je Model koji odgovara tabeli user 
- */
-
-// implements ModelInterface
 class AdminModel implements ModelInterface {
 
     public static function getAll() {
@@ -28,9 +23,5 @@ class AdminModel implements ModelInterface {
         $prep->execute([$username, $passwordHash]);
         return $prep->fetch(PDO::FETCH_OBJ);
     }
-    
-    
 
-    //login
-    //logout
 }

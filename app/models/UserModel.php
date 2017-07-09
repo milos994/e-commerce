@@ -1,10 +1,5 @@
 <?php
 
-/*
- * Ovo je Model koji odgovara tabeli user 
- */
-
-// implements ModelInterface
 class UserModel implements ModelInterface {
 
     public static function getAll() {
@@ -39,6 +34,7 @@ class UserModel implements ModelInterface {
             return null;
         }
     }
+    
     public static function getByUsernameAndEmail($username, $email) {
         $SQL = 'SELECT * FROM user WHERE `username` = ? AND `email` = ?;';
         $prep = DataBase::getInstance()->prepare($SQL);
