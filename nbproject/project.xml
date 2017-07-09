@@ -9,6 +9,7 @@
             <word>bg</word>
             <word>metodom</word>
             <word>Opcije</word>
+            <word>varP</word>
         </spellchecker-wordlist>
     </configuration>
 </project>

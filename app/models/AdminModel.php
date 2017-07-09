@@ -28,6 +28,8 @@ class AdminModel implements ModelInterface {
         $prep->execute([$username, $passwordHash]);
         return $prep->fetch(PDO::FETCH_OBJ);
     }
+    
+    
 
     //login
     //logout

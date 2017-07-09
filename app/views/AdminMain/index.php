@@ -1,0 +1,42 @@
+<?php require_once 'app/views/_global/admin-header.php'; ?>
+<article class="container blok">
+    <header>
+        <h1 class="text-center mt-5 mb-5">Spisak svih korisnika</h1>
+    </header>
+    
+    
+    <table class="table table-condensed border mb-5">
+        
+        <div class="border-top">
+            <thead class="table-danger">   
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Ime</th>
+                    <th class="text-center">Prezime</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Korisnicko ime</th>
+                    <th class="text-center">Datum registracije</th>
+                    <th class="text-center">IP</th>
+                    <th class="text-center" colspan="1">Opcije</th>
+                </tr>
+            </thead>
+        </div>
+        <tbody>
+
+            <?php foreach ($DATA['korisnici'] as $korisnici): ?>
+            <tr class="text-center">
+                <td><?php echo htmlspecialchars($korisnici->user_id);?></td>
+                <td><?php echo htmlspecialchars($korisnici->name);?></td>
+                <td><?php echo htmlspecialchars($korisnici->surname);?></td>
+                <td><?php echo htmlspecialchars($korisnici->email);?></td>
+                <td><?php echo htmlspecialchars($korisnici->username);?></td>
+                <td><?php echo htmlspecialchars($korisnici->created_at);?></td>
+                <td><?php echo htmlspecialchars($korisnici->ip);?></td>
+                <td class="text-center"><a role="button" class="red-text" href="<?php echo Configuration::BASE_URL; ?>admin/korisnici/delete/<?php echo $korisnici->user_id?>"><i class="fa fa-times"></i></a></td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</article>
+
+<?php require_once 'app/views/_global/footer.php'; ?>

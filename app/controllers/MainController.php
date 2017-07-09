@@ -62,4 +62,28 @@ class MainController extends Controller {
         
     }
     
+    public function register () {
+        
+        $name = filter_input(INPUT_POST, 'name');
+        $surname = filter_input(INPUT_POST, 'surname');
+        $email = filter_input(INPUT_POST, 'email');
+        $username = filter_input(INPUT_POST, 'username');
+        $password = filter_input(INPUT_POST, 'password');
+        $ip = filter_input(INPUT_SERVER, 'REMOTE_ADDR', FILTER_FLAG_IPV4);
+        $passwordhash = hash('sha512', $password . Configuration::USER_SALT);
+        $rezultat = UserModel::getByUsernameAndEmail($username, $email);
+        if($rezultat == null){
+            $res = UserModel::add($name, $surname, $email, $username, $passwordhash, $ip);
+            if($res){
+                Misc::redirect('login');
+            }else{
+                 $this->set('message', 'Korisnik nije unet');
+            }
+            
+        }else{
+            $this->set('message', 'Korisnik sa ovim emailom i usenamemom vec postoji');
+        }
+        
+    }
+    
 }

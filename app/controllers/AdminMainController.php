@@ -1,6 +1,30 @@
 <?php
 
 class AdminMainController extends Controller {
+    
+    public function index() {
+        $korisnici = UserModel::getAll();
+        $this->set('korisnici', $korisnici);
+    }
+    
+    public function delete($user_id) {
+
+        $user = UserModel::getById($user_id);
+        $this->set('user', $user);
+
+        if ($_POST) {
+            $confirmed = filter_input(INPUT_POST, 'confirmed', FILTER_SANITIZE_NUMBER_INT);
+
+            if ($confirmed == 1) {
+                $res = UserModel::delete($user_id);
+                if ($res) {
+                    Misc::redirect('admin/korisnici');
+                } else {
+                    $this->setData('message', "Korisnik je uspeŠno obrisan!");
+                }
+            }
+        }
+    }
 
     public function login() {
         if (!empty($_POST)) {

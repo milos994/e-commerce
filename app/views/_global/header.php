@@ -27,7 +27,10 @@
                 } else {
                     echo '<a href="' .Configuration::BASE_URL . 'login" class="btn btn-sm btn-success my-1">Uloguj se</a>';
                 }
+                
+                 echo '<a href="' .Configuration::BASE_URL . 'registracija" class="btn btn-sm btn-info my-1 ml-3">Registruj se</a>';
             ?>
+            
         </div>
     </div>
     <div class="main-header">

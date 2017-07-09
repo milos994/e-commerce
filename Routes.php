@@ -13,6 +13,11 @@ return [
         'Method' => 'logout'
     ],
     [
+        'Pattern' => '|^registracija/?$|',
+        'Controller' => 'Main',
+        'Method' => 'register'
+    ],
+    [
         'Pattern' => '|^/?$|',
         'Controller' => 'Main',
         'Method' => 'index'
@@ -65,6 +70,16 @@ return [
     [
         'Pattern' => '|^admin/kategorije/delete/([0-9]+)/?$|',
         'Controller' => 'AdminCategory',
+        'Method' => 'delete'
+    ],
+    [
+        'Pattern' => '|^admin/korisnici?$|',
+        'Controller' => 'AdminMain',
+        'Method' => 'index'
+    ],
+    [
+        'Pattern' => '|^admin/korisnici/delete/([0-9]+)/?$|',
+        'Controller' => 'AdminMain',
         'Method' => 'delete'
     ],
     [
