@@ -16,4 +16,11 @@ class CartProductModel implements ModelInterface {
         $prep -> execute([$id]);
         return $prep->fetch(PDO::FETCH_OBJ);
     }
+    
+    public static function add($product_id) {
+        $SQL = 'INSERT INTO cart_product (product_id) VALUES (?);';
+        $prep = DataBase::getInstance()->prepare($SQL);
+        return $prep->execute([$product_id]);
+    }
+    
 }

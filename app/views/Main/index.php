@@ -27,19 +27,24 @@
             <h3>Najnoviji proizvodi</h3>
             <section class="proizvodi">
                 <?php foreach (@$DATA['products'] as $product): ?>
+                <form method="post" action="">
+
                     <div class="proizvod">
                         <a href="<?php echo Misc::link('product/' . $product->id); ?>">
                             <figure>
-                                <img src="<?php echo Configuration::BASE_URL ?>assets/img/ar.jpg" alt="">
+                                <img src="<?php echo Configuration::BASE_URL ?>assets/img/<?php echo $product->product_id?>.jpg">
                                 <figcaption><?php echo htmlspecialchars($product->name); ?></figcaption>
                             </figure>
                         </a>
                         <div class="detalji-proizvoda">
                             <p><?php echo htmlspecialchars($product->amount); ?> din.</p>
-                            <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
+                            <input type="number" hidden name="proizvod" value="<?php echo htmlspecialchars($product->product_id); ?>">
+                            <input type="submit" href="korpa.php" value="Add to cart" class="btn btn-primary btn-sm">
                         </div>
                     </div>
+                </form> 
                 <?php endforeach; ?>
+                    
             </section>
         </div>
         <div class="clearfix"></div>

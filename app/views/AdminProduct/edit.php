@@ -11,14 +11,15 @@
                     <form method="post" action="<?php echo Configuration::BASE_URL; ?>admin/proizvodi/edit/<?php echo htmlspecialchars($DATA['proizvod']->product_id);?>">
                         <label for="name" class="pl-3">Ime proizvoda: </label>
                         <input class="form-control pl-3" type="text" name="name" id="name" 
-                            pattern="^[A-Z][a-z]+" title="Ime proizvoda mora poceti velikim slovom!" required value="<?php echo htmlspecialchars($DATA['proizvod']->name);?>"><br>
+                            pattern="([A-Za-z 0-9.,]" title="Ime proizvoda mora poceti velikim slovom!" required value="<?php echo htmlspecialchars($DATA['proizvod']->name);?>"><br>
 
                         <label for="short_text" class="pl-3">Kratak opis: </label>
                         <input class="form-control pl-3" type="text" name="short_text" id="short_text"
-                              pattern="^[A-Z][a-z]+" title="Kratak opis proizvoda mora poceti velikim slovom!" value="<?php echo htmlspecialchars($DATA['proizvod']->short_text);?>"><br>
+                              pattern="([A-Za-z 0-9.,]" title="Kratak opis proizvoda mora poceti velikim slovom!" value="<?php echo htmlspecialchars($DATA['proizvod']->short_text);?>"><br>
 
                         <label for="long_text" class="pl-3">Detaljan opis: </label>
                         <textarea class="form-control pl-3" rows="9" type="text" name="long_text"
+                                 pattern= "([A-Za-z 0-9.,]"
                                  title="Detaljan opis proizvoda mora poceti velikim slovom!" id="long_text"><?php echo htmlspecialchars($DATA['proizvod']->long_text);?></textarea><br>
 
                         <label for="cena" class="pl-3">Cena: </label>

@@ -9,6 +9,8 @@ class MainController extends Controller {
 
         $listaKategorija = AdminCategoryModel::getAll();
         $this->set('kategorije', $listaKategorija);
+        var_dump($_POST);
+        
     }
 
     public function login() {
