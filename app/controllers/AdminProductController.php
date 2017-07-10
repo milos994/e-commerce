@@ -30,8 +30,8 @@ class AdminProductController extends AdminController {
             $amount = filter_input(INPUT_POST, 'cena', FILTER_SANITIZE_NUMBER_INT);
             $product_category_id = filter_input(INPUT_POST, 'kategorija');
 
-            if (preg_match('([A-Za-z 0-9.,]', $name) == 1 and preg_match('([A-Za-z 0-9.,]', $short_text) == 1
-                    and preg_match('([A-Za-z 0-9.,]', $long_text) == 1
+            if (preg_match('[A-Za-z 0-9.,]', $name) == 1 and preg_match('[A-Za-z 0-9.,]', $short_text) == 1
+                    and preg_match('[A-Za-z 0-9.,]', $long_text) == 1
                     and preg_match('/^[0-9]{1,4}$/', $amount) == 1) {
                 $this->set('message', 'Neispravno ste uneli ime kategorije ili slug.');
                 return;
@@ -70,8 +70,8 @@ class AdminProductController extends AdminController {
         $active = filter_input(INPUT_POST, 'active');
         $product_category_id = filter_input(INPUT_POST, 'kategorija');
 
-        if (preg_match('([A-Za-z 0-9.,])', $name) == 1 and preg_match('([A-Za-z 0-9.,])', $short_text) == 1
-                and preg_match('([A-Za-z 0-9.,])', $long_text) == 1
+        if (preg_match('[A-Za-z 0-9.,]', $name) == 1 and preg_match('[A-Za-z 0-9.,]', $short_text) == 1
+                and preg_match('[A-Za-z 0-9.,]', $long_text) == 1
                 and preg_match('/^[0-9]{1,4}$/', $amount) == 1) {
             $this->set('message', 'Neispravno ste uneli ime kategorije ili slug.');
             return;

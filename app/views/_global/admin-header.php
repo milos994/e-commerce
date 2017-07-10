@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Miloš Nešovanović / milos.nesovanovic.13@singimail.rs">
-    <title><?php echo @$DATA['seo_title']; ?></title>
-
+    <title>Prodavnica</title>
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="<?php echo Configuration::BASE_URL ?>assets/css/main.css">

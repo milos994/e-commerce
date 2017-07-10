@@ -1,14 +1,13 @@
 <?php require_once 'app/views/_global/admin-header.php'; ?>
 
-<article my-auto>
-
+<div>
     <section class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-12 col-md-8 col-lg-6 py-5">
                 <div class="border rounded p-4  mt-5 mb-5">
                     <header class="text-center">
-                        <h3>Da li želite da obrišete proizvod? <br>
-                        <p class="mt-5 mb-5"><?php echo htmlspecialchars($DATA['product']->name);?></p></h3> 
+                        <h3 class="mt-3 mb-3">Da li želite da obrišete proizvod?</h3> <br>
+                        <h3><?php echo htmlspecialchars($DATA['product']->name);?></h3>
                     </header>
                     <form class="text-center" method="post" action="<?php echo Configuration::BASE_URL; ?>admin/proizvodi/delete/<?php echo $DATA['product']->product_id;?>">
                         <input type="hidden" name="confirmed" value="1">
@@ -22,6 +21,6 @@
             </div>
         </div>
     </section>
-</article>
+</div>
 <?php require_once ('app/views/_global/footer.php'); ?>
     

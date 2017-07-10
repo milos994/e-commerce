@@ -72,7 +72,7 @@
                     </div>
                 </section>
 
-                <section class="proizvodii mt-5 mb-5">
+                <div class="proizvodii mt-5 mb-5">
                     <?php foreach (@$DATA['products'] as $product): ?>
                     <div class="proizvod">
                         <a href="<?php echo Misc::link('product/' . $product->product_id); ?>">
@@ -88,7 +88,7 @@
                     </div>
                          
                     <?php endforeach; ?>
-                </section>
+                </div>
 
             </div>
         </div>

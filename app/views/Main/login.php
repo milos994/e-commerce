@@ -6,13 +6,13 @@
         <div class="page-content">
             <form method="post">
                 <div class="form-group">
-                    <label for="username">Korisničko ime:</label><br>
+                    <label>Korisničko ime:</label><br>
                     <input type="text" name="username" required class="form-control"
                            pattern="^[A-z0-9_\-\.]{4,32}$" placeholder="Unesite korisničko ime">
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Lozinka:</label><br>
+                    <label>Lozinka:</label><br>
                     <input type="password" name="password" required class="form-control"
                            pattern="^.{5,}$" placeholder="Unesite lozinku">
                 </div>
