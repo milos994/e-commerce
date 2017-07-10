@@ -1,12 +1,21 @@
 <?php
-
+/**
+ * Klasa kontrolera AdminMain panela. 
+ */
 class AdminMainController extends Controller {
     
+    /**
+     * Indeks metod AdminMain kontrolera.
+     */
     public function index() {
         $korisnici = UserModel::getAll();
         $this->set('korisnici', $korisnici);
     }
     
+    /**
+     * Delete metod AdminMain kotrolera koji brise korisnika iz baze.
+     * @param int $user_id
+     */
     public function delete($user_id) {
 
         $user = UserModel::getById($user_id);
@@ -25,7 +34,11 @@ class AdminMainController extends Controller {
             }
         }
     }
-
+    
+    /**
+     * Login metod AdminMain kontrolera koji vrsi logovanje admin korisnika.
+     * @return boolean
+     */
     public function login() {
         if (!empty($_POST)) {
             $username = filter_input(INPUT_POST, 'username');
@@ -48,7 +61,10 @@ class AdminMainController extends Controller {
             }
         }
     }
-
+    
+    /**
+     * Logout metod AdminMain kotnrolera koji vrsi logout admin korisnika.
+     */
     public function logout() {
         Session::end();
         Misc::redirect('admin');

@@ -1,6 +1,11 @@
 <?php
-
-class CartProductController extends AdminController {
+/**
+ * Klasa kontrolera za rad sa korpama.
+ */
+class CartProductController extends Controller {
+    /**
+     * Klasa CartProduct kontrolera koja dodaje proizvod u korpu.
+     */
     public function add() {
         $korpa = CartProductModel::getAll();
         $this->set('korpa', $korpa);

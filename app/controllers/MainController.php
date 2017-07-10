@@ -1,20 +1,24 @@
 <?php
-
+/**
+ * Klasa Main kontrolera.
+ */
 class MainController extends Controller {
-
+    
+    /**
+     * Indeks metod Main kontrolera.
+     */
     function index() {
-
         $listaProizvoda = AdminProductModel::getAll();
         $this->set('products', $listaProizvoda);
-
         $listaKategorija = AdminCategoryModel::getAll();
         $this->set('kategorije', $listaKategorija);
-        var_dump($_POST);
-        
     }
-
+    
+    /**
+     * Login metod Main kontrolera koji vrsi logovanje korisnika na ecommerc.
+     * @return boolean
+     */
     public function login() {
-
         if ($_POST) {
             $username = filter_input(INPUT_POST, 'username');
             $password = filter_input(INPUT_POST, 'password');
@@ -40,12 +44,19 @@ class MainController extends Controller {
             Misc::redirect('');
         }
     }
-
+    
+    /**
+     * Logout metod Main kotnrolera koji vrsi logout korisnika sa ecommerc-a.
+     */
     public function logout() {
         Session::end();
         Misc::redirect('login');
     }
-
+    
+    /**
+     * Register metod Main kotrolera koji vrsi registrovanje korisnika na
+     *  ecommerc.
+     */
     public function register() {
         $name = filter_input(INPUT_POST, 'name');
         $surname = filter_input(INPUT_POST, 'surname');

@@ -1,12 +1,23 @@
 <?php
-
+/**
+ * Klasa kontrolera Admin panela za rad sa kategorijama.
+ */
 class AdminCategoryController extends AdminController {
-
+    
+    /**
+     * Indeks metod AdminCategory kontrolera za rad sa kategorijama koji prikazuje spisak
+     * svih kategorija.
+     */
     public function index() {
         $kategorije = AdminCategoryModel::getAll();
         $this->set('kategorije', $kategorije);
     }
-
+    
+    /**
+     * Metod AdminCategory kotrolera koji prikazuje formular za dodavanje ili vrsi 
+     * dodavanje kategorija ako su podaci poslati HTTP POST metodom.
+     * @return void
+     */
     public function add() {
         if ($_POST) {
             $category_name = filter_input(INPUT_POST, 'category_name');
@@ -26,7 +37,13 @@ class AdminCategoryController extends AdminController {
             }
         }
     }
-
+    
+    /**
+     * Metod AdminCategory kotrolera koji prikazuje formular za izmenu ili vrsi 
+     * izmenu kategorije ako su podaci poslati HTTP POST metodom.
+     * @param int $id
+     * @return void
+     */
     public function edit($id) {
         $category = AdminCategoryModel::getById($id);
         $this->set('category', $category);
@@ -50,7 +67,12 @@ class AdminCategoryController extends AdminController {
             $this->set('message', 'Doslo je do greske prilikom izmene podataka o kategoriji.');
         }
     }
-
+    
+    /**
+     * Metod AdminCategory kotrolera koji prikazuje formular za brisanje ili vrsi 
+     * brisanje kategorije ako su podaci poslati HTTP POST metodom.
+     * @param int $id
+     */
     public function delete($id) {
 
         $category = AdminCategoryModel::getById($id);

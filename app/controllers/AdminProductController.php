@@ -1,12 +1,23 @@
 <?php
-
+/**
+ * Klasa Admin kontrolera za rad sa proizvodima.
+ */
 class AdminProductController extends AdminController {
-
+    
+    /**
+    * Indeks metod AdminProduct kontrolera za rad sa proizvodima koji prikazuje spisak
+    * svih proizvoda.
+    */
     public function index() {
         $proizvodi = AdminProductModel::getAll();
         $this->set('products', $proizvodi);
     }
-
+    
+    /**
+     * Metod AdminProduct kotrolera koji prikazuje formular za dodavanje ili vrsi 
+     * dodavanje proizvoda ako su podaci poslati HTTP POST metodom.
+     * @return void
+     */
     public function add() {
         $kategorije = AdminCategoryModel::getAll();
         $this->set('kategorije', $kategorije);
@@ -37,23 +48,14 @@ class AdminProductController extends AdminController {
             $this->set('message', 'Doslo je do greske prilikom dodavanja proizvoda u bazu podataka.');
         }
     }
-
-    public function delete($id) {
-        $proizvod = AdminProductModel::getById($id);
-        $this->set('product', $proizvod);
-        if ($_POST) {
-            $confirmed = filter_input(INPUT_POST, 'confirmed', FILTER_SANITIZE_NUMBER_INT);
-            if ($confirmed == 1) {
-                $res = AdminProductModel::delete($id);
-                if ($res) {
-                    Misc::redirect('admin/proizvodi/');
-                } else {
-                    $this->setData('poruka', "Proizvod je uklonjen!");
-                }
-            }
-        }
-    }
-
+    
+    
+    /**
+     * Metod AdminProduct kotrolera koji prikazuje formular za izmenu ili vrsi 
+     * izmenu proizvoda ako su podaci poslati HTTP POST metodom.
+     * @param int $product_id
+     * @return void
+     */
     public function edit($product_id) {
         $kategorije = AdminCategoryModel::getAll();
         $this->set('kategorije', $kategorije);
@@ -83,5 +85,27 @@ class AdminProductController extends AdminController {
             $this->set('message', 'Doslo je do greske prilikom izmene podataka o proizvodu.');
         }
     }
+    
+    /**
+     * Metod AdminProduct kotrolera koji prikazuje formular za brisanje ili vrsi 
+     * brisanje proizvoda ako su podaci poslati HTTP POST metodom.
+     * @param int $id
+     */
+    public function delete($id) {
+        $proizvod = AdminProductModel::getById($id);
+        $this->set('product', $proizvod);
+        if ($_POST) {
+            $confirmed = filter_input(INPUT_POST, 'confirmed', FILTER_SANITIZE_NUMBER_INT);
+            if ($confirmed == 1) {
+                $res = AdminProductModel::delete($id);
+                if ($res) {
+                    Misc::redirect('admin/proizvodi/');
+                } else {
+                    $this->setData('poruka', "Proizvod je uklonjen!");
+                }
+            }
+        }
+    }
+
 }
 
