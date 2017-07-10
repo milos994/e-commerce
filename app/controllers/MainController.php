@@ -4,7 +4,7 @@ class MainController extends Controller {
 
     function index() {
 
-        $listaProizvoda = ProductModel::getAll();
+        $listaProizvoda = AdminProductModel::getAll();
         $this->set('products', $listaProizvoda);
 
         $listaKategorija = AdminCategoryModel::getAll();

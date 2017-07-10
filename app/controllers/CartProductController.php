@@ -1,7 +1,7 @@
 <?php
 
 class CartProductController extends AdminController {
-        public function add() {
+    public function add() {
         $korpa = CartProductModel::getAll();
         $this->set('korpa', $korpa);
         if ($_POST) {
