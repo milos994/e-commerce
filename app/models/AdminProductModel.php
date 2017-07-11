@@ -75,6 +75,17 @@ class AdminProductModel implements ModelInterface{
         $prep = DataBase::getInstance()->prepare($SQL);
         return $prep->execute([$id]);
     }
+    
+    /**
+     * Metod koji vraca poslednji id iz tabele proizvoda.
+     * @return stdClass|null
+     */
+    public static function getLastInsertID(){
+        $SQL = 'SELECT `AUTO_INCREMENT` from INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = "e-commerce"  AND TABLE_NAME = "product";';
+        $prep = DataBase::getInstance()->prepare($SQL);
+        $prep->execute();
+        return $prep->fetch(PDO::FETCH_OBJ);
+   }
 
 
 }

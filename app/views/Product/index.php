@@ -83,11 +83,13 @@
                         </a>
                         <div class="detalji-proizvoda">
                             <p><?php echo htmlspecialchars($product->amount); ?> din.</p>
-                            <a href="korpa.php" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Dodaj u korpu</a>
+                            <form action="<?php echo Misc::link('cart/add'); ?>" method="post">
+                                <input type="number" hidden name="proizvod" value="<?php echo htmlspecialchars($product->product_id); ?>">
+                                <input type="submit" value="Add to cart" class="btn btn-primary btn-sm">
+                            </form>
                         </div>
                     </div>
-                         
-                    <?php endforeach; ?>
+                <?php endforeach; ?>
                 </div>
 
             </div>

@@ -1,0 +1,18 @@
+<?php require_once 'app/views/_global/header.php'; ?>
+
+<main>
+    <div class="slika-radnje"></div>
+    <div class="container">
+        <section class="opis-radnje">
+            <h3><?php echo $DATA['title']; ?></h3>
+            <p><?php echo $DATA['prvi_pasus']; ?></p>
+
+            <p>Kolekcija ima mnogo, kao i Vaših želja! Uvek nastojimo da maksimalno stručno i iskreno pomognemo u odabiru modela za Vas i Vase najdraže. Posebno mesto u našoj ponudi su usluge našeg servisa, koji je do sada velikom broju "dragih uspomena" vratio sjaj i udahnuo novi život. Vaš osmeh, zadovoljstvo i stisak ruke daju nam energiju da nastavimo ovim putem i budemo još bolji. Daćemo sve od sebe da kvalitet naših usluga bude kao i vreme-konstantno i bez prekida.</p>
+
+            <p>Čekamo Vas, Dobrodošli.</p>
+        </section>
+    </div>
+</main>
+
+<?php require_once 'app/views/_global/footer.php'; ?>
+

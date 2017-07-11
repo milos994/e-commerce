@@ -4,7 +4,7 @@
         session_start(); 
     } 
 ?>
-<html lang="en">
+<html lang="sr">
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Miloš Nešovanović / milos.nesovanovic.13@singimail.rs">
@@ -48,7 +48,8 @@
                 <div class="collapse navbar-collapse " id="main-menu">
                     <ul class="nav navbar-nav ml-auto">
                         <li><a class="nav-item nav-link" href="<?php echo Configuration::BASE_URL ?>proizvodi">Proizvodi</a></li>
-                        <li><a class="nav-item nav-link" href="onama.html">O nama</a></li>
+                        <li><a class="nav-item nav-link" href="<?php echo Configuration::BASE_URL ?>cart/">Korpa</a></li>
+                        <li><a class="nav-item nav-link" href="<?php echo Configuration::BASE_URL ?>onama">O nama</a></li>
                         <li><a class="nav-item nav-link" href="<?php echo Configuration::BASE_URL ?>kontakt">Kontakt</a></li>
                     </ul>
                 </div>

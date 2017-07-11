@@ -48,5 +48,8 @@ if (method_exists($worker, $Method)) {
 }
 
 $DATA = $worker->get();
-require 'app/views/' . $FoundRoute['Controller'] . '/' . $FoundRoute['Method'] . '.php';
-
+if($FoundRoute['Controller'] === 'CartProduct' && $FoundRoute['Pattern'] === '|^cart/?$|' && $FoundRoute['Method'] === 'index') {
+    require 'app/views/' . $FoundRoute['Controller'] . '/' . $FoundRoute['Method'] . '.php';
+} else if($FoundRoute['Controller'] !== 'CartProduct' && $FoundRoute['Pattern'] !== '|^cart/?$|') {
+    require 'app/views/' . $FoundRoute['Controller'] . '/' . $FoundRoute['Method'] . '.php';
+}

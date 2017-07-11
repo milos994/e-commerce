@@ -55,7 +55,7 @@ class MainController extends Controller {
     
     /**
      * Register metod Main kotrolera koji vrsi registrovanje korisnika na
-     *  ecommerc.
+     * ecommerc.
      */
     public function register() {
         $name = filter_input(INPUT_POST, 'name');
@@ -84,5 +84,7 @@ class MainController extends Controller {
             $this->set('message', 'Niste uneli ispravne podatke.');
         }
     }
+    
+
 
 }

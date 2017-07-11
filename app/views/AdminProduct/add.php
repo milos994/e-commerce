@@ -43,7 +43,9 @@
                         endforeach;
                         ?>
 
-
+                        <label class="pl-3">Izaberite sliku proizvoda:</label>
+                        <input type="file"  name="fileToUpload" id="fileToUpload">
+                        
                         <button type="submit" class="btn btn-success">Dodaj proizvod</button>
                     </form>
                 </div>

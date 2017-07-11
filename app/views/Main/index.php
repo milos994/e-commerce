@@ -25,12 +25,10 @@
 
         <div class="container">
             <h3>Najnoviji proizvodi</h3>
-            <section class="proizvodi">
+            <div class="proizvodi">
                 <?php foreach (@$DATA['products'] as $product): ?>
-                <form method="post" action="">
-
                     <div class="proizvod">
-                        <a href="<?php echo Misc::link('product/' . $product->id); ?>">
+                        <a href="<?php echo Misc::link('product/' . $product->product_id); ?>">
                             <figure>
                                 <img src="<?php echo Configuration::BASE_URL ?>assets/img/<?php echo $product->product_id?>.jpg">
                                 <figcaption><?php echo htmlspecialchars($product->name); ?></figcaption>
@@ -38,19 +36,20 @@
                         </a>
                         <div class="detalji-proizvoda">
                             <p><?php echo htmlspecialchars($product->amount); ?> din.</p>
-                            <input type="number" hidden name="proizvod" value="<?php echo htmlspecialchars($product->product_id); ?>">
-                            <input type="submit" href="korpa.php" value="Add to cart" class="btn btn-primary btn-sm">
+                            <form action="<?php echo Misc::link('cart/add'); ?>" method="post">
+                                <input type="number" hidden name="proizvod" value="<?php echo htmlspecialchars($product->product_id); ?>">
+                                <input type="submit" value="Add to cart" class="btn btn-primary btn-sm">
+                            </form>
                         </div>
                     </div>
-                </form> 
                 <?php endforeach; ?>
                     
-            </section>
+            </div>
         </div>
         <div class="clearfix"></div>
-        <article class="izjave-nasih-kupaca">
+        <div class="izjave-nasih-kupaca">
             <div class="container">
-                <article class="izjave">
+                <div class="izjave">
                     <div class="izjava-kupca">
                         <div class="kupac">
                             <div class="slika-kupca">
@@ -96,9 +95,9 @@
                             </p>
                         </div>
                     </div>
-                </article>
+                </div>
             </div>
-        </article>
+        </div>
 
         <div class="container">
             <section class="social-icon">

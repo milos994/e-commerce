@@ -345,7 +345,9 @@ footer p {
     border-bottom: 1px solid #e3e1e1;
     align-items: stretch;
 }
-
+.slika-proizvod>img {
+    width: 100%;
+}
 .slika-proizvod, .model-proizvod, .cena-proizvod {
     display: flex;
     flex-basis: 30%;
@@ -452,6 +454,10 @@ footer p {
 
 .red-text {
     color: red;
+}
+
+.text{
+    float: left;
 }
 
 .teal-text {

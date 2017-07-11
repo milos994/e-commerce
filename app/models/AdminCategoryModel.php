@@ -44,8 +44,8 @@ class AdminCategoryModel implements ModelInterface{
     
     /**
      * Metod koji vrsi dodavanje zapisa kategorije u bazu podataka.
-     * @param int $category_name
-     * @param string $slug
+     * @param varchar $category_name
+     * @param varchar $slug
      * @return boolean
      */
     public static function add($category_name, $slug) {
@@ -56,8 +56,8 @@ class AdminCategoryModel implements ModelInterface{
     
     /**
      * Metod koji vrsi izmenu zapisa kategorije u bazi podataka.
-     * @param int $category_name
-     * @param string $slug
+     * @param varchar $category_name
+     * @param varchar $slug
      * @param int $id
      * @return boolean
      */

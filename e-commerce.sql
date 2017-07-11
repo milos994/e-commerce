@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100124
 File Encoding         : 65001
 
-Date: 2017-07-10 10:06:42
+Date: 2017-07-11 02:37:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -38,15 +38,12 @@ INSERT INTO `admin` VALUES ('2', 'milos', '1F57F00AA4E509A452917AC20399189B135AF
 DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `cart_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `cart_product_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cart_id`),
   KEY `fk_cart_1` (`user_id`),
-  KEY `cart_product_id` (`cart_product_id`),
-  CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`cart_product_id`) REFERENCES `cart_product` (`cart_product_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_cart_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cart
@@ -58,21 +55,18 @@ CREATE TABLE `cart` (
 DROP TABLE IF EXISTS `cart_product`;
 CREATE TABLE `cart_product` (
   `cart_product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `cart_id` int(10) unsigned NOT NULL,
   `product_id` int(10) unsigned NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cart_product_id`),
-  KEY `product_id` (`product_id`),
-  CONSTRAINT `cart_product_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  KEY `cart_product_ibfk_2` (`product_id`),
+  KEY `cart_product_ibfk_3` (`cart_id`),
+  CONSTRAINT `cart_product_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `cart_product_ibfk_3` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cart_product
 -- ----------------------------
-INSERT INTO `cart_product` VALUES ('4', '8', '2017-07-10 01:20:08');
-INSERT INTO `cart_product` VALUES ('5', '14', '2017-07-10 01:23:23');
-INSERT INTO `cart_product` VALUES ('6', '16', '2017-07-10 01:23:28');
-INSERT INTO `cart_product` VALUES ('7', '8', '2017-07-10 01:24:52');
-INSERT INTO `cart_product` VALUES ('8', '8', '2017-07-10 01:25:05');
 
 -- ----------------------------
 -- Table structure for order
@@ -109,14 +103,21 @@ CREATE TABLE `product` (
   PRIMARY KEY (`product_id`),
   KEY `product_ibfk_1` (`product_category_id`),
   CONSTRAINT `product_ibfk_1` FOREIGN KEY (`product_category_id`) REFERENCES `product_category` (`product_category_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES ('8', 'Frank Muller', 'adasda', 'Analogni', 'sda dsdasdas das das ada sda sdasd asdas dasd asd a', 'y', '2017-07-09 22:24:49', '10999', '4');
-INSERT INTO `product` VALUES ('14', 'Armani', 'Armani muski sat', 'Analogni', 'Armani muski sat ', '', '2017-07-09 15:12:54', '10999', '4');
-INSERT INTO `product` VALUES ('16', 'Jacques Lemans', 'Jacques Lemans muski sat.', 'Analogni', 'Jacques Lemans novi elegantni muski sat.', 'y', '2017-07-09 23:51:07', '10998', '4');
+INSERT INTO `product` VALUES ('8', 'Frank Muller', 'Frank Muller elegantni muski sat.', 'Analogni', 'Frank Muller elegantni muski sat iz 2017 godine je namenjen za ozbiljne muskarce.', 'y', '2017-07-11 01:53:59', '10999', '4');
+INSERT INTO `product` VALUES ('14', 'Armani 4H', 'Armani 4H muski sat.', 'Analogni', 'Armani 4H muski sat iz zimske kolekcije.', '', '2017-07-11 01:54:41', '10998', '4');
+INSERT INTO `product` VALUES ('16', 'Jacques Lemans', 'Jacques Lemans', 'Analogni', 'Jacques Lemans novi elegantni muski sat.', 'y', '2017-07-11 01:54:56', '10998', '4');
+INSERT INTO `product` VALUES ('37', 'Fossil 1Z', 'Fossil 1Z zenski sat', 'Analogni', 'Fossil 1-z zenski sat za ozbiljne dame', 'y', '2017-07-11 01:56:38', '9998', '5');
+INSERT INTO `product` VALUES ('38', 'Armani 98h', 'Armani 98h zenski sat.', 'Analogni', 'Armani 98h eleganti zenski sat roze boje.', 'y', '2017-07-11 01:58:09', '9988', '5');
+INSERT INTO `product` VALUES ('39', 'Citizen 98gh', 'Citizen 98gh', 'Analogni', 'Citizen 98gh sportski muski sat.', 'y', '2017-07-11 02:01:31', '9988', '4');
+INSERT INTO `product` VALUES ('40', 'Michael Kors G998', 'Michael Kors G998', 'Analogni', 'Michael Kors G998 zenski eleganti sat.', 'y', '2017-07-11 02:02:10', '8999', '5');
+INSERT INTO `product` VALUES ('41', 'Michael Kors G988', 'Michael Kors G988', 'Analogni', 'Michael Kors G988 zenski sat sa metalnom narukvicom.', 'y', '2017-07-11 02:02:53', '9988', '5');
+INSERT INTO `product` VALUES ('42', 'SOliver M98', 'SOliver M98', 'Analogni', 'SOliver M98 muski sat sa metalnom narukvicom.', 'y', '2017-07-11 02:03:34', '10899', '4');
+INSERT INTO `product` VALUES ('43', 'Fossil MN998', 'Fossil MN998', 'Analogni', 'Fossil MN998 musku sat izradjen od veoma kvalitetnog materijala.', 'y', '2017-07-11 02:04:39', '8998', '4');
 
 -- ----------------------------
 -- Table structure for product_category
@@ -127,7 +128,7 @@ CREATE TABLE `product_category` (
   `category_name` varchar(64) NOT NULL,
   `slug` varchar(64) NOT NULL,
   PRIMARY KEY (`product_category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of product_category
@@ -141,7 +142,7 @@ INSERT INTO `product_category` VALUES ('22', 'Deciji', 'deciji');
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `surname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -151,7 +152,7 @@ CREATE TABLE `user` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `ip` varchar(255) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user

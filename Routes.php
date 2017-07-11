@@ -23,9 +23,39 @@ return [
         'Method' => 'index'
     ],
     [
+        'Pattern' => '|^cart/?$|',
+        'Controller' => 'CartProduct',
+        'Method' => 'index'
+    ],
+    [
+        'Pattern' => '|^cart/add?$|',
+        'Controller' => 'CartProduct',
+        'Method' => 'add'
+    ],
+    [
+        'Pattern' => '|^cart/remove?$|',
+        'Controller' => 'CartProduct',
+        'Method' => 'remove'
+    ],
+    [
+        'Pattern' => '|^cart/buy?$|',
+        'Controller' => 'CartProduct',
+        'Method' => 'buy'
+    ],
+    [
         'Pattern' => '|^proizvodi/?$|',
         'Controller' => 'Product',
         'Method' => 'index'
+    ],
+    [
+        'Pattern' => '|^onama/?$|',
+        'Controller' => 'Page',
+        'Method' => 'onama'
+    ],
+    [
+        'Pattern' => '|^kontakt/?$|',
+        'Controller' => 'Page',
+        'Method' => 'kontakt'
     ],
     [
         'Pattern' => '|^admin/?$|',

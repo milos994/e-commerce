@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Klasa Admin kontrolera za rad sa proizvodima.
@@ -38,7 +39,28 @@ class AdminProductController extends AdminController {
             }
 
             $res = AdminProductModel::add($name, $short_text, $prikaz_sata, $long_text, $active, $amount, $product_category_id);
-            if ($res == 1) {
+            
+            $last_id = AdminProductModel::getLastInsertID();
+            $a = $last_id->AUTO_INCREMENT;
+            if (isset($_FILES['fileToUpload'])) {
+                $file_name = $_FILES['fileToUpload']['name'];
+                $file_tmp = $_FILES['fileToUpload']['tmp_name'];
+
+                list($width, $height) = getimagesize($file_tmp);
+                if ($width === 600) {
+                    $w = true;
+                }
+                if ($height === 600) {
+                    $h = true;
+                }
+
+                $file_name = $a . '.jpg';
+            }
+            $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+            
+            
+            if ($res) {
+                move_uploaded_file($file_tmp, "assets/img/" . $file_name);
                 Misc::redirect('admin/proizvodi/');
             } else {
                 $this->set('message', 'Doslo je do greske prilikom dodavanja proizvoda u bazu podataka.');
