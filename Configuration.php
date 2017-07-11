@@ -12,10 +12,6 @@ abstract class Configuration {
         
         const USER_SALT = 'dfgodfhgu54hy98yugobrglrthg98uyt9rhgu56uruyrufgjyt65uujfgjf56';
         
-        const IMAGE_DATA_PATH = 'data/images/';
-        
-        const ITEMS_PER_PAGE = 5;
-        
 
 }
 

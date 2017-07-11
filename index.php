@@ -2,9 +2,6 @@
 
 require_once 'sys/Autoloader.php';
 Session::begin();
-//Session::end();
-
-
 
 $Request = $_SERVER['REQUEST_URI'];
 
